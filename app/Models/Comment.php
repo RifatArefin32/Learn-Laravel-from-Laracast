@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['description'];
+
+    protected $fillable = ['description', 'user_id', 'post_id'];
 
     // Define relationships
     // Many to One with Post model
