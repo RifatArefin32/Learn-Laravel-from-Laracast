@@ -32,4 +32,12 @@ Route::get('/jobs', function () {
     return view('jobs', $context);
 });
 
+Route::get('/jobs/{id}', function($id) {
+    $job = Job::find($id);
+    $context = [
+        'job' => $job
+    ];
+
+    return view('job-details', $context);
+});
 
