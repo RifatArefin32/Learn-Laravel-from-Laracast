@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Tag;
 use App\Models\Job;
+use App\Models\Employer;
+
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,19 +18,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create 10 Users
+        User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        // Create Tags
-        $tags = Tag::factory(10)->create();
-
-        // Create Jobs and attach Tags
-        Job::factory(20)
-            ->hasAttached($tags->random(3))
-            ->create();
+        // Create 5 Employers
+        $employers = Employer::factory(5)
+            ->has(
+                Job::factory(3)->hasAttached(
+                    Tag::factory(2)->create(),
+                    [], // Pivot table data if any
+                )
+            )->create();
+        
+        // Log seeded data
+        $this->command->info("Seeded 10 users, 5 employers, and 15 jobs with tags!");
     }
 }
