@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,7 +16,20 @@ Route::get('/contact', function () {
 });
 
 Route::get('/jobs', function () {
-    return view('jobs');
+    // lazy loading
+    // $jobs = Job::all();
+    
+    // eager loading
+    // $jobs = Job::with('employer')->get();
+    
+    // get data with pagination
+    $jobs = Job::with('employer')->paginate(5);
+    
+    $context = [
+        'jobs' => $jobs,
+    ];
+
+    return view('jobs', $context);
 });
 
 
