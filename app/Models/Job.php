@@ -16,4 +16,9 @@ class Job extends Model
     public function employer() {
         return $this->belongsTo(Employer::class);
     }
+
+    // Many to Many relationship with Tag class
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }
