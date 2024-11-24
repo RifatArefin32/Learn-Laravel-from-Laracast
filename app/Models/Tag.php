@@ -9,6 +9,8 @@ class Tag extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     // Many to Many relationship with Job class
     public function jobs() {
         return $this->belongsToMany(Job::class, foreignPivotKey:"job_items_id");
