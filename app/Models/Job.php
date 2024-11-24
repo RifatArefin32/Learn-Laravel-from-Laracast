@@ -19,6 +19,6 @@ class Job extends Model
 
     // Many to Many relationship with Tag class
     public function tags() {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, foreignPivotKey:"job_items_id");
     }
 }
