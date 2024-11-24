@@ -5,6 +5,7 @@
         // dd($jobs);
     @endphp
     @if (!$jobs->isEmpty())
+        {{-- job lists --}}
         <div>
             @foreach ($jobs as $job)
                 <div
@@ -21,6 +22,7 @@
                 </div>
             @endforeach
         </div>
+        {{-- paging bar --}}
         <div class="mt-10">
             {{ $jobs->links() }}
         </div>
