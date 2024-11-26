@@ -66,6 +66,28 @@ Route::get('/jobs/{id}/edit', function($id) {
     return view('jobs.edit', $context);
 });
 
+// update a job
+Route::patch('/jobs/{id}', function($id) {
+    // validate
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
+
+    // authorize
+    // update the job
+    $job = Job::findOrFail ($id);
+    $job->update([
+        'title' => request('title'),
+        'description' => request('description'),
+        'location' => request('location'),
+        'salary' => request('salary'),
+        
+    ]);
+
+    return redirect('jobs/'.$job->id);
+});
+
 // show a job
 Route::get('/jobs/{id}', function($id) {
     $job = Job::find($id);

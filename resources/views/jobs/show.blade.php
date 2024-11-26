@@ -39,6 +39,12 @@
                 </table>
             </div>
         </div>
+        <div class="mt-5">
+            <a  href="/jobs/{{$job->id}}/edit"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-sm font-medium transition">
+                Edit
+            </a>
+        </div>
     </div>
 
 </x-layout>
