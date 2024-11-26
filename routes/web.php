@@ -17,20 +17,19 @@ Route::get('/contact', function () {
 
 // jobs routes
 Route::get('/jobs', function () {
-    // lazy loading
-    // $jobs = Job::all();
-    
-    // eager loading
-    // $jobs = Job::with('employer')->get();
-    
-    // get data with pagination
-    $jobs = Job::with('employer')->paginate(5);
+    // $jobs = Job::all();   // lazy loading
+    // $jobs = Job::with('employer')->get();    // eager loading
+    $jobs = Job::with('employer')->paginate(5); // get data with pagination
     
     $context = [
         'jobs' => $jobs,
     ];
 
     return view('jobs.index', $context);
+});
+
+Route::get('/jobs/create', function() {
+    return view('jobs.create');
 });
 
 Route::get('/jobs/{id}', function($id) {
