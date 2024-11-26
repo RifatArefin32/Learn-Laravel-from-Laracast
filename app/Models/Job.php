@@ -10,7 +10,7 @@ class Job extends Model
     use HasFactory;
     // table name
     protected $table = 'job_items';
-    protected $fillable = ['title', 'description', 'location', 'salary'];
+    protected $fillable = ['title', 'description', 'location', 'salary', 'employer_id'];
 
     // Many to One relationship with Employer
     public function employer() {

@@ -28,6 +28,25 @@ Route::get('/jobs', function () {
     return view('jobs.index', $context);
 });
 
+Route::post('/jobs', function() {
+    // dd(request()->all());
+
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
+
+    Job::create([
+        'title' => request('title'),
+        'description' => request(key: 'description'),
+        'location' => request(key: 'location'),
+        'salary' => request('salary'),
+        'employer_id' => 1,
+    ]);
+
+    return redirect('/jobs');
+});
+
 Route::get('/jobs/create', function() {
     return view('jobs.create');
 });
