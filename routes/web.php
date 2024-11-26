@@ -15,6 +15,7 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+// jobs routes
 Route::get('/jobs', function () {
     // lazy loading
     // $jobs = Job::all();
@@ -29,7 +30,7 @@ Route::get('/jobs', function () {
         'jobs' => $jobs,
     ];
 
-    return view('jobs', $context);
+    return view('jobs.index', $context);
 });
 
 Route::get('/jobs/{id}', function($id) {
@@ -38,6 +39,6 @@ Route::get('/jobs/{id}', function($id) {
         'job' => $job
     ];
 
-    return view('job-details', $context);
+    return view('jobs.show', $context);
 });
 
