@@ -15,11 +15,15 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-// jobs routes
+
+
+// Section: jobs routes
+
+// index
 Route::get('/jobs', function () {
     // $jobs = Job::all();   // lazy loading
     // $jobs = Job::with('employer')->get();    // eager loading
-    $jobs = Job::with('employer')->paginate(5); // get data with pagination
+    $jobs = Job::with('employer')->latest()->paginate(5); // get data with pagination
     
     $context = [
         'jobs' => $jobs,
@@ -28,9 +32,9 @@ Route::get('/jobs', function () {
     return view('jobs.index', $context);
 });
 
+// store a job
 Route::post('/jobs', function() {
     // dd(request()->all());
-
     request()->validate([
         'title' => ['required', 'min:3'],
         'salary' => ['required']
@@ -47,10 +51,22 @@ Route::post('/jobs', function() {
     return redirect('/jobs');
 });
 
+// create a job
 Route::get('/jobs/create', function() {
     return view('jobs.create');
 });
 
+// edit a job
+Route::get('/jobs/{id}/edit', function($id) {
+    $job = Job::find($id);
+    $context = [
+        'job' => $job
+    ];
+
+    return view('jobs.edit', $context);
+});
+
+// show a job
 Route::get('/jobs/{id}', function($id) {
     $job = Job::find($id);
     $context = [
