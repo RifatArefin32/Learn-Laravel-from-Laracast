@@ -22,6 +22,7 @@
         <nav class="bg-gray-800">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
+                    <!-- Logo and Links -->
                     <div class="flex items-center">
                         <div class="shrink-0 text-white">
                             <a href="/"> My Job Portal </a>
@@ -35,26 +36,35 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6">
-                            <button type="button" class="text-white"> Login </button>
-                        </div>
+
+                    <!-- CTA Button and login logout -->
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="/jobs/create"
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-sm font-medium transition">
+                            Create Job
+                        </a>
+                        <button type="button" class="text-white hover:text-gray-200 transition">
+                            Login
+                        </button>
                     </div>
                 </div>
             </div>
         </nav>
 
+        <!-- Page Header -->
         <header class="bg-white shadow">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900"> {{ $page_title }} </h1>
             </div>
         </header>
-        <main>
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <!-- Your content -->
-                {{ $slot }}
-            </div>
-        </main>
+    </div>
+
+    <main>
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <!-- Your content -->
+            {{ $slot }}
+        </div>
+    </main>
     </div>
 </body>
 
