@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\JobControllerRMB;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
@@ -107,11 +108,21 @@ Route::get('/contact', function () {
 //     return redirect('/jobs');
 // });
 
-// Routes using controller
-Route::get('/jobs', [JobController::class, 'index']);
-Route::get('/jobs/create', [JobController::class, 'create']);
-Route::post('/jobs', [JobController::class, 'store']);
-Route::get('/jobs/{id}/edit', [JobController::class, 'edit']);
-Route::get('/jobs/{id}', [JobController::class, 'show']);
-Route::patch('/jobs/{id}', [JobController::class, 'update']);
-Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
+// // Routes using controller
+// Route::get('/jobs', [JobController::class, 'index']);
+// Route::get('/jobs/create', [JobController::class, 'create']);
+// Route::post('/jobs', [JobController::class, 'store']);
+// Route::get('/jobs/{id}/edit', [JobController::class, 'edit']);
+// Route::get('/jobs/{id}', [JobController::class, 'show']);
+// Route::patch('/jobs/{id}', [JobController::class, 'update']);
+// Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
+
+
+// Routes using controller and Route Model Binding
+Route::get('/jobs', [JobControllerRMB::class, 'index']);
+Route::get('/jobs/create', [JobControllerRMB::class, 'create']);
+Route::post('/jobs', [JobControllerRMB::class, 'store']);
+Route::get('/jobs/{job}/edit', [JobControllerRMB::class, 'edit']);
+Route::get('/jobs/{job}', [JobControllerRMB::class, 'show']);
+Route::patch('/jobs/{job}', [JobControllerRMB::class, 'update']);
+Route::delete('/jobs/{job}', [JobControllerRMB::class, 'destroy']);
