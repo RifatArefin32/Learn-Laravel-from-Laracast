@@ -5,17 +5,23 @@ use App\Http\Controllers\JobControllerRMB;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
+
+// Route View
+Route::view('/', 'home');
+Route::view('/about', 'about');
+Route::view('/contact', 'contact');
+
 
 
 
