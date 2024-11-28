@@ -134,13 +134,23 @@ Route::view('/contact', 'contact');
 // Route::delete('/jobs/{job}', [JobControllerRMB::class, 'destroy']);
 
 
-// Route controller group
-Route::controller(JobControllerRMB::class)->group(function() {
-    Route::get('/jobs',  'index');
-    Route::get('/jobs/create',  'create');
-    Route::post('/jobs',  'store');
-    Route::get('/jobs/{job}/edit',  'edit');
-    Route::get('/jobs/{job}',  'show');
-    Route::patch('/jobs/{job}',  'update');
-    Route::delete('/jobs/{job}',  'destroy');
-});
+// // Route controller group
+// Route::controller(JobControllerRMB::class)->group(function() {
+//     Route::get('/jobs',  'index');
+//     Route::get('/jobs/create',  'create');
+//     Route::post('/jobs',  'store');
+//     Route::get('/jobs/{job}/edit',  'edit');
+//     Route::get('/jobs/{job}',  'show');
+//     Route::patch('/jobs/{job}',  'update');
+//     Route::delete('/jobs/{job}',  'destroy');
+// });
+
+
+// Route using resource
+Route::resource('jobs', JobControllerRMB::class);
+// Route::resource('jobs', JobControllerRMB::class, [
+//     'only' => ['edit']
+// ]);
+// Route::resource('jobs', JobControllerRMB::class, [
+//     'except' => ['index', 'show', 'create', 'edit', 'store']
+// ]);
