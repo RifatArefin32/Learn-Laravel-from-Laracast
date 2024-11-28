@@ -124,11 +124,23 @@ Route::view('/contact', 'contact');
 // Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
 
 
-// Routes using controller and Route Model Binding
-Route::get('/jobs', [JobControllerRMB::class, 'index']);
-Route::get('/jobs/create', [JobControllerRMB::class, 'create']);
-Route::post('/jobs', [JobControllerRMB::class, 'store']);
-Route::get('/jobs/{job}/edit', [JobControllerRMB::class, 'edit']);
-Route::get('/jobs/{job}', [JobControllerRMB::class, 'show']);
-Route::patch('/jobs/{job}', [JobControllerRMB::class, 'update']);
-Route::delete('/jobs/{job}', [JobControllerRMB::class, 'destroy']);
+// // Routes using controller and Route Model Binding
+// Route::get('/jobs', [JobControllerRMB::class, 'index']);
+// Route::get('/jobs/create', [JobControllerRMB::class, 'create']);
+// Route::post('/jobs', [JobControllerRMB::class, 'store']);
+// Route::get('/jobs/{job}/edit', [JobControllerRMB::class, 'edit']);
+// Route::get('/jobs/{job}', [JobControllerRMB::class, 'show']);
+// Route::patch('/jobs/{job}', [JobControllerRMB::class, 'update']);
+// Route::delete('/jobs/{job}', [JobControllerRMB::class, 'destroy']);
+
+
+// Route controller group
+Route::controller(JobControllerRMB::class)->group(function() {
+    Route::get('/jobs',  'index');
+    Route::get('/jobs/create',  'create');
+    Route::post('/jobs',  'store');
+    Route::get('/jobs/{job}/edit',  'edit');
+    Route::get('/jobs/{job}',  'show');
+    Route::patch('/jobs/{job}',  'update');
+    Route::delete('/jobs/{job}',  'destroy');
+});

@@ -64,7 +64,7 @@ class JobControllerRMB extends Controller
     }
 
     // update a job
-    public function update($job)
+    public function update(Job $job)
     {
         // validate
         request()->validate([
