@@ -62,11 +62,14 @@
             <!-- Submit Button -->
             <div class="mt-6">
                 <a  href="/jobs/{{$job->id}}"> Cancel </a>
-                <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-sm font-medium transition">
-                    Update
-                </button>
+                <button type="submit" class="text-blue-500 font-bold p-4"> Update </button>
+                <button form="delete-form" class="text-red-500 font-bold p-4"> Delete </button>
             </div>
+        </form>
+
+        <form action="/jobs/{{$job->id}}" method="post" id="delete-form" class="hidden">
+            @csrf
+            @method('DELETE')
         </form>
     </div>
 

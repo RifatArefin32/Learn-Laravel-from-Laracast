@@ -84,7 +84,7 @@ Route::patch('/jobs/{id}', function($id) {
         'salary' => request('salary'),
         
     ]);
-
+    // redirect
     return redirect('jobs/'.$job->id);
 });
 
@@ -96,5 +96,13 @@ Route::get('/jobs/{id}', function($id) {
     ];
 
     return view('jobs.show', $context);
+});
+
+// Destroy a job
+Route::delete('/jobs/{id}', function($id){
+    $job = Job::findOrFail($id);
+    $job->delete();
+
+    return redirect('/jobs');
 });
 
